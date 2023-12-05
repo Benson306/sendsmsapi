@@ -38,7 +38,7 @@ def format_phone_number(phone):
     return str(phone)
 
 @app.route('/', methods=['GET'])
-@cross_origin
+@cross_origin()
 def home():
     return jsonify({'Home':'Welcome'})
 
