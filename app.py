@@ -78,20 +78,20 @@ def upload_excel():
                 try:
                     response = sms.send(message, contacts)
                     print(response)  # Log the response to check if the SMS was sent successfully
-                    return jsonify({'message': 'SMS sent successfully'})
+                    return jsonify({'message': 'SMS sent successfully'}), 200
                 except Exception as e:
                     print(f"Failed to send SMS: {str(e)}")
-                    return jsonify({'error': f'Failed to send SMS: {str(e)}'})
+                    return jsonify({'error': f'Failed to send SMS: {str(e)}'}), 500
             
             else:
-                return jsonify({'error': 'Column "contacts" not found in the Excel file'})
+                return jsonify({'error': 'Column "contacts" not found in the Excel file'}), 400
         
         except Exception as e:
             print(f'Error processing the file: {str(e)}')
-            return jsonify({'error': f'Error processing the file: {str(e)}'}) 
+            return jsonify({'error': f'Error processing the file: {str(e)}'}), 500
     
     else:
-        return jsonify({'error': 'Invalid file format. Please upload an Excel file (.xlsx)'})
+        return jsonify({'error': 'Invalid file format. Please upload an Excel file (.xlsx)'}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
