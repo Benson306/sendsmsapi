@@ -37,11 +37,6 @@ def format_phone_number(phone):
             return '+254' + str(phone)  # Replace leading '7' with '+254'
     return str(phone)
 
-@app.route('/', methods=['GET'])
-@cross_origin()
-def home():
-    return jsonify({'Home':'Welcome'})
-
 @app.route('/upload', methods=['POST'])
 @cross_origin()
 def upload_excel():
