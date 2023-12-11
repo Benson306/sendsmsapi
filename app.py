@@ -44,7 +44,9 @@ def upload_excel():
         return jsonify({'error': 'No file part'})
     
     file = request.files['file']
-    figure = request.form.get('amount')
+    maize_amount = request.form.get('maize_amount')
+    date = request.form.get('date')
+    wheat_amount = request.form.get('wheat_amount')
     
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
@@ -70,10 +72,8 @@ def upload_excel():
                 contacts = df['contacts'].tolist()
                 
                 # Send SMS to unique contacts
-                message = "Habari wakulima, \n"
-                message += f"Karibu! Tuna furaha kuwajulisha kuwa bei ya kununua mahindi ni {figure} Ksh kwa gunia la kilo 90 lenye unyevu wa 13%. Kwa maelezo zaidi, tafadhali wasiliana nasi kupitia nambari 0714931331.\n"
-                message += "Shukrani \n"
-                message += "TALLAM'S GENERAL STORES"
+                message = "Dear Supplier,\n"
+                message += f"This is to notify you that on {date} TGS_Agro offers to buy quality maize at KES {maize_amount} per 90kg and Wheat at KES {wheat_amount} per kg. Payment within 24hrs. Call 0714931331"
 
                 try:
                     response = sms.send(message, contacts)
