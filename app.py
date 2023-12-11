@@ -73,7 +73,7 @@ def upload_excel():
                 
                 # Send SMS to unique contacts
                 message = "Dear Supplier,\n"
-                message += f"This is to notify you that on {date} TGS_Agro offers to buy quality maize at KES {maize_amount} per 90kg and Wheat at KES {wheat_amount} per 90 kg. Payment within 24hrs. Call 0714931331"
+                message += f"This is to notify you that on {date} TGS_Agro offers to buy quality maize at KES {maize_amount} per 90kg and Wheat at KES {wheat_amount} per 90kg. Payment within 24hrs. Call 0714931331"
 
                 try:
                     response = sms.send(message, contacts)
