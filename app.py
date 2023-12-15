@@ -18,6 +18,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 # Configure Africa's Talking API
 username = os.getenv("AFRICASTALKING_USERNAME")
 api_key = os.getenv("API_KEY")
+Sender_Id = os.getenv("SENDER_ID")
 
 africastalking.initialize(username, api_key)
 sms = africastalking.SMS
@@ -75,7 +76,7 @@ def upload_excel():
                 message += f"This is to notify you that on {date} TGS_Agri offers to buy quality maize at KES {maize_amount} per 90kg less 1% Moisture 14.5% Payment instantly. Call 0714931331"
 
                 try:
-                    response = sms.send(message, contacts)
+                    response = sms.send(message, contacts, Sender_Id)
                     print(response)  # Log the response to check if the SMS was sent successfully
                     return jsonify({'message': 'SMS sent successfully'}), 200
                 except Exception as e:
