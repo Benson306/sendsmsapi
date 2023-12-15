@@ -46,7 +46,6 @@ def upload_excel():
     file = request.files['file']
     maize_amount = request.form.get('maize_amount')
     date = request.form.get('date')
-    wheat_amount = request.form.get('wheat_amount')
     
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
@@ -73,7 +72,7 @@ def upload_excel():
                 
                 # Send SMS to unique contacts
                 message = "Dear Supplier,\n"
-                message += f"This is to notify you that on {date} TGS_Agri offers to buy quality maize at KES {maize_amount} per 90kg and Wheat at KES {wheat_amount} per 90kg. Payment instantly. Call 0714931331"
+                message += f"This is to notify you that on {date} TGS_Agri offers to buy quality maize at KES {maize_amount} per 90kg less 1% Moisture 14.5% Payment instantly. Call 0714931331"
 
                 try:
                     response = sms.send(message, contacts)
